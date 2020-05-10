@@ -22,7 +22,6 @@ function* fetchGists (action) {
   try {
     let listGists = []
     yield put({type: 'SET_GISTS', listGists});
-    console.log('action', action.payload.page)
     const gists = yield call(Api.getPublicGists, action.payload.page);
     const { data } = gists
     listGists = yield cleanList(data)
@@ -36,7 +35,6 @@ function* detailGist (action) {
   try {
     let detail = []
     yield put({type: 'SET_DETAIL', detail});
-    console.log('action', action.payload.id)
     const detailResult = yield call(Api.getDetailGist, action.payload.id);
     const { data } = detailResult
     const {files} = data
